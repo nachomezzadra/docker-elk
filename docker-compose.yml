@@ -5,7 +5,7 @@ elasticsearch:
 logstash:
   #image: logstash:latest
   build: logstash/
-  command: logstash -f /etc/logstash/conf.d/logstash.conf
+  command: logstash --pluginpath /etc/logstash/conf.d/extras -f /etc/logstash/conf.d/logstash.conf #-v --debug --verbose
   volumes:
     - ./logstash/config:/etc/logstash/conf.d
   ports:
