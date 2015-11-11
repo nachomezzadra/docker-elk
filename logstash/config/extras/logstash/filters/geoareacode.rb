@@ -57,6 +57,8 @@ class LogStash::Filters::GeoAreaCode < LogStash::Filters::Base
 
         #locId,country,region,city,postalCode,latitude,longitude,metroCode,areaCode
         @locs[areaCode] = [ latitude, longitude ] # { "lat" => row[6].to_f, "lon" => row[5].to_f }
+        # @locs[areaCode] =  { "lat" => latitude, "lon" => longitude }
+        # @locs[areaCode] = "{lat: "+latitude+", "+" lon: " +longitude+"}"
       end
     end
     @logger.info("Ended up loading Geo DB")
@@ -75,7 +77,6 @@ class LogStash::Filters::GeoAreaCode < LogStash::Filters::Base
         event[@target] = @locs[areaCode]
       else
         @logger.warn("Unmapped area code: ", {"areaCode" => areaCode})
-        # event[@target] = "[0, 0]"
       end
     end
     # filter_matched should go in the last line of our successful code 
