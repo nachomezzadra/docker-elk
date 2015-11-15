@@ -1,3 +1,3 @@
-FROM elasticsearch:latest
+FROM elasticsearch:2.0.0
 
-RUN plugin -i elasticsearch/marvel/latest
+#RUN plugin install marvel --verbose

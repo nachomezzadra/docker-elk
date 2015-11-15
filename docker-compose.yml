@@ -1,7 +1,12 @@
 elasticsearch:
+  name: elasticsearch
   build: elasticsearch/
   ports:
     - "9200:9200"
+    - "9300:9300"
+  volumes:
+    - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+
 logstash:
   #image: logstash:latest
   build: logstash/
@@ -12,6 +17,7 @@ logstash:
     - "5000:5000"
   links:
     - elasticsearch
+
 kibana:
   build: kibana/
   volumes:
