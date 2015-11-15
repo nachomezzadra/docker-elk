@@ -52,13 +52,11 @@ class LogStash::Filters::GeoAreaCode < LogStash::Filters::Base
       areaCode = encode(row[8])
       unless areaCode.nil?
         @logger.debug("Area Code: ", :areaCode => areaCode)
-        latitude = encode(row[6]).to_f
-        longitude = encode(row[5]).to_f
+        latitude = encode(row[5]).to_f
+        longitude = encode(row[6]).to_f
 
         #locId,country,region,city,postalCode,latitude,longitude,metroCode,areaCode
-        @locs[areaCode] = [ latitude, longitude ] # { "lat" => row[6].to_f, "lon" => row[5].to_f }
-        # @locs[areaCode] =  { "lat" => latitude, "lon" => longitude }
-        # @locs[areaCode] = "{lat: "+latitude+", "+" lon: " +longitude+"}"
+        @locs[areaCode] = [ longitude, latitude ] # { "lat" => row[5].to_f, "lon" => row[6].to_f }
       end
     end
     @logger.info("Ended up loading Geo DB")

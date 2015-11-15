@@ -1,0 +1,30 @@
+{
+    "template": "logstash-*",
+    "mappings": {
+        "dss": {
+            "_source":{"enabled":true},
+            "properties": {
+                "@timestamp":{"type":"date"},
+                "file" : { "type" : "string" },
+                "host" : { "type" : "string", "index":"not_analyzed" },
+                "offset": { "type" : "long" },
+                "UCID": {"type" : "string", "index": "not_analyzed"},
+                "ANI": {"type" : "string", "index": "not_analyzed"},
+                "callFlowKey" : {"type" : "string", "index": "not_analyzed"},
+                "callFlowName" : {"type" : "string", "index": "not_analyzed"},
+                "mppSessionID" : {"type" : "string", "index": "not_analyzed"},
+                "uui" : {"type" : "string", "index": "not_analyzed"},
+                "sequenceNumber" : { "type" : "integer" },
+                "souceNode" : { "type" : "string", "index":"not_analyzed" },
+                "sourceNodeType" : { "type" : "string", "index":"not_analyzed" },
+                "linkCode" : { "type" : "string", "index":"not_analyzed" },
+                "targetNode" : { "type" : "string", "index":"not_analyzed" },
+                "targetNodeType" : { "type" : "string", "index":"not_analyzed" },
+                "callCenterService" : { "type" : "string" },
+                "transitionName" : { "type" : "string", "index":"not_analyzed" },
+                "transferredTo" : { "type" : "string" },
+                "location" : {"type" : "geo_point" }
+            }
+        }
+    }
+}
